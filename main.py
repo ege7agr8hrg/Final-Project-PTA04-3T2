@@ -77,10 +77,41 @@ class Login(QMainWindow):
         if (self.txtuseremail.text() + ":" +self.txtpassword.text()) in accounts:
             self.close()
             home.show()
+class homepage (QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("UI .800 Blackout/Final.ui", self)
+        self.btnphone.clicked.connect(self.showunavailable)
+        self.btnphone.clicked.connect(self.showunavailable)
+        self.btnlaptopmini.clicked.connect(self.showlaptop)
+        self.btnphonemini_3.clicked.connect(self.showmenu)
+        self.btnlaptopmini_2.clicked.connect(self.showlaptop)
+        self.btnmenu.clicked.connect(self.showmenu)
+        self.btnmenu_2.clicked.connect(self.showmenu)
+        self.btnphonemini_4.clicked.connect(self.showmenu)
+        self.btnlaptop.clicked.connect(self.showunavailable)
+        self.btnphonemini_6.clicked.connect(self.showmenu)
+        self.btntablet.clicked.connect(self.showunavailable)
+        self.btntabletmini.clicked.connect(self.showtablet)
+        self.btnlaptopmini_3.clicked.connect(self.showlaptop)
+        self.btntabletmini_3.clicked.connect(self.showtablet)
+        self.btntabletmini_2.clicked.connect(self.showtablet)
+        self.stackedsigma.setCurrentIndex(3)
+    def showunavailable(self):
+        self.stackedsigma.setCurrentIndex(1)
+    def showlaptop (self):
+        self.stackedsigma.setCurrentIndex(2)
+    def showmenu(self):
+        self.stackedsigma.setCurrentIndex(3)
+    def showtablet(self):
+        self.stackedsigma.setCurrentIndex(4)
+
+
 if __name__=="__main__":
     app = QApplication(sys.argv)
     lg = Login()
     Su = SignUp()
     home = homedashboard()
-    lg.show()
+    home2 = homepage()
+    home2.show()
     app.exec()
