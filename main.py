@@ -81,21 +81,22 @@ class homepage (QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("UI .800 Blackout/Final.ui", self)
-        self.btnphone.clicked.connect(self.showunavailable)
-        self.btnphone.clicked.connect(self.showunavailable)
+        x = None
+        self.btnphone.clicked.connect(lambda _, item = x: self.showbuy(LinkBuy = "https://www.samsung.com/us/smartphones/galaxy-z-fold6/buy/galaxy-z-fold6-256gb-unlocked-sm-f956uakaxaa/"))
+        self.btnphone.clicked.connect(lambda _, item = x: self.showbuy(LinkBuy = "https://www.samsung.com/us/smartphones/galaxy-z-fold6/buy/galaxy-z-fold6-256gb-unlocked-sm-f956uakaxaa/"))
         self.btnlaptopmini.clicked.connect(self.showlaptop)
         self.btnphonemini_3.clicked.connect(self.showmenu)
         self.btnlaptopmini_2.clicked.connect(self.showlaptop)
         self.btnmenu.clicked.connect(self.showmenu)
         self.btnmenu_2.clicked.connect(self.showmenu)
         self.btnphonemini_4.clicked.connect(self.showmenu)
-        self.btnlaptop.clicked.connect(self.showunavailable)
+        self.btnlaptop.clicked.connect(lambda _, item = x: self.showbuy(LinkBuy = "https://www.apple.com/shop/buy-mac/macbook-pro"))
         self.btnphonemini_6.clicked.connect(self.showmenu)
-        self.btntablet.clicked.connect(self.showunavailable)
+        self.btntablet.clicked.connect(lambda _, item = x: self.showbuy(LinkBuy = "https://www.samsung.com/us/tablets/galaxy-tab-s10/buy/galaxy-tab-s10-ultra-256gb-moonstone-gray-wi-fi-sm-x920nzaaxar/"))
         self.btntabletmini.clicked.connect(self.showtablet)
         self.btnlaptopmini_3.clicked.connect(self.showlaptop)
         self.btntabletmini_3.clicked.connect(self.showtablet)
-        self.btntabletmini_2.clicked.connect(self.showtablet)
+        self.btntabletmini_2 .clicked.connect(self.showtablet)
         self.stackedsigma.setCurrentIndex(3)
     def showunavailable(self):
         self.stackedsigma.setCurrentIndex(1)
@@ -105,6 +106,8 @@ class homepage (QMainWindow):
         self.stackedsigma.setCurrentIndex(3)
     def showtablet(self):
         self.stackedsigma.setCurrentIndex(4)
+    def showbuy(self, LinkBuy):
+        webbrowser.open(LinkBuy)
 
 
 if __name__=="__main__":
