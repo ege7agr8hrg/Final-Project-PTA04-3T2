@@ -1,15 +1,34 @@
-class MathOperations:
-    result = 0
-    def __init__(self, x):
-        self.result = x
-    
-    def add (self, x, y):
-        self.result += x + y
-    
-    def multiply(self, x, y):
-        self.result += x * y
-math_ops = MathOperations(20)
-math_ops.add (3, 5)
-math_ops.multiply(2,4)
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget,
+from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.QtCore import QUrl
+import sys
 
-print(math_ops.result)
+
+class YouTubeEmbedApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("YouTube Embed in PyQt6")
+
+        # Central widget
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+
+        # Layout
+        layout = QVBoxLayout()
+        central_widget.setLayout(layout)
+
+        # QWebEngineView to load YouTube
+        self.web_view = QWebEngineView()
+        youtube_url = "https://www.youtube.com/watch?v=kPa7bsKwL-c"  # Replace with your desired YouTube video URL
+        self.web_view.setUrl(QUrl(youtube_url))
+        
+        # Add web view to layout
+        layout.addWidget(self.web_view)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = YouTubeEmbedApp()
+    window.resize(800, 600)  # Set window size
+    window.show()
+    sys.exit(app.exec())
